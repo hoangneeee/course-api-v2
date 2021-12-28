@@ -55,7 +55,7 @@ async  def update_course(id, request: schemas.Course,  db: Session = Depends(get
                          current_user: schemas.User = Depends(oauth2.get_current_user)):
     course = db.query(models.Course).filter(models.Course.id == id)
     if not course.first():
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Blog with the id {id} is not available")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Course with the id {id} is not available")
     course.update(dict(request))
     db.commit()
     return 'Update OK'
@@ -67,7 +67,7 @@ async def destroy_course(id: int, db: Session = Depends(get_db),
                          current_user: schemas.User = Depends(oauth2.get_current_user)):
     course = db.query(models.Course).filter(models.Course.id == id)
     if not course.first():
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Blog with the id {id} is not available")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Course with the id {id} is not available")
     course.delete(synchronize_session=False)
     db.commit()
     return 'Done'

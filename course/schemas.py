@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+
 from typing import List, Optional
 
 from fastapi import Query, Body
@@ -6,6 +7,7 @@ from pydantic import BaseModel
 
 
 '''Create Schemas Here'''
+
 class Course(BaseModel):
     course_name: Optional[str]
     price: Optional[int]
@@ -37,6 +39,7 @@ class ShowCourse(BaseModel):
 class User(BaseModel):
     username: Optional[str] = Body(min_length=1, max_length=255, default=None)
     password: Optional[str]
+    rule: Optional[str] = Body(default='student')
     gmail: Optional[str]
     phone: Optional[str] = Body(default=0)
     age: Optional[int]
@@ -46,6 +49,7 @@ class User(BaseModel):
 class ShowUser(BaseModel):
     id: int
     username: str
+    rule: str
     gmail: str
     phone: str
     coin: int

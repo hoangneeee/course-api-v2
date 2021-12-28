@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 '''Create Model Here'''
 
-'''Table Coure'''
+'''Table Course'''
 class Course(Base):
     __tablename__ = 'course'
 
@@ -34,6 +34,7 @@ class User(Base):
     password = Column(String)
     coin = Column(Integer, default=0)
     age = Column(SmallInteger)
+    rule = Column(String)
     gender = Column(String)
     phone = Column(String)
     gmail = Column(String)
