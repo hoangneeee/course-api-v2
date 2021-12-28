@@ -57,6 +57,11 @@ class ShowUser(BaseModel):
         orm_mode=True
 
 
+class AddCoin(BaseModel):
+    username: str
+    coin: int
+
+
 class Token(BaseModel):
     access_token: str
     token_type: str

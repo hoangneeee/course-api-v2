@@ -13,14 +13,14 @@ router = APIRouter(
 )
 
 
-'''Get all Course'''
+'''Show all Course'''
 @router.get("/", response_model=List[schemas.ShowCourse])
 async def get_all_course(db: Session = Depends(get_db)):
     courses = db.query(models.Course).all()
     return courses
 
 
-'''Get course with Id'''
+'''Show course with Id'''
 @router.get("/{id}", response_model=schemas.ShowCourse, status_code=status.HTTP_200_OK)
 async def get_course_with_id(id: int, db: Session = Depends(get_db),
                              current_user: schemas.User = Depends(oauth2.get_current_user)):
